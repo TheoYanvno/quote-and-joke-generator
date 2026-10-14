@@ -1,5 +1,7 @@
 # Quote & Joke Generator
 
+**▶ [Live demo](https://theoyanvno.github.io/quote-and-joke-generator/)**
+
 A quick pick-me-up: switch between inspiring **quotes** and clean **jokes**, filter by category, save your favorites, and share them.
 
 **Tech:** JavaScript (ES modules) · HTML/CSS · `localStorage` · `node:test` · no frameworks
