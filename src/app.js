@@ -115,7 +115,7 @@ function renderFavorites() {
   $('favEmpty').hidden = favorites.length > 0;
   $('favList').innerHTML = favorites.map((f, i) => `<li><span>${f.text.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</span><button data-i="${i}" aria-label="Remove">✕</button></li>`).join('');
   if (api.mode === 'off') $('favWhere').textContent = 'Saved in this browser.';
-  else if (user) $('favWhere').textContent = `Saved to ${user.username}'s account, on any device.`;
+  else if (user) $('favWhere').textContent = api.mode === 'demo' ? `Saved to ${user.username}'s demo account (in this browser).` : `Saved to ${user.username}'s account, on any device.`;
   else $('favWhere').innerHTML = 'Saved in this browser only. <button id="favLogin" class="ghost">Log in</button> to keep them in an account.';
   $('favLogin')?.addEventListener('click', () => openAuth('login'));
 }
@@ -208,7 +208,7 @@ $('authForm').onsubmit = async (e) => {
     await afterAuthChange();
     toast(`${authMode === 'signup' ? 'Account created' : 'Logged in'} as ${user.username}.${moved ? ` ${moved} saved item${moved === 1 ? '' : 's'} moved to your account.` : ''}`);
   } catch (err) {
-    if (!(err instanceof ApiError)) { $('authError').textContent = 'Could not reach the server. Check your connection.'; return; }
+    if (!(err instanceof ApiError)) { $('authError').textContent = api.mode === 'demo' ? 'Something went wrong saving in this browser.' : 'Could not reach the server. Check your connection.'; return; }
     for (const [field, message] of Object.entries(err.fields)) {
       $(`${field}Error`).textContent = message;
       $(field).setAttribute('aria-invalid', 'true');
@@ -241,6 +241,8 @@ async function start() {
   api = await connect();
   if (api.mode !== 'off') {
     $('account').hidden = false;
+    $('demoBadge').hidden = api.mode !== 'demo';
+    $('demoNote').hidden = api.mode !== 'demo';
     try { user = (await api.call('GET', '/api/me')).user; } catch { user = null; }
   }
   await afterAuthChange();

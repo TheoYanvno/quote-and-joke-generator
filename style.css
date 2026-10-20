@@ -36,6 +36,8 @@ kbd { font-size: .7rem; opacity: .7; border: 1px solid currentColor; border-radi
 .app { position: relative; }
 .account { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-bottom: 8px; color: #fff; font-size: .9rem; }
 .who { font-weight: 600; }
+.demo-badge { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border: 1px solid rgba(255,255,255,.7); border-radius: 999px; cursor: help; }
+.demo-note { margin: 0 0 6px; padding: 8px 12px; background: #fffbeb; color: #92400e; border-radius: 10px; font-size: .82rem; }
 button.ghost { background: rgba(255,255,255,.18); color: #fff; padding: 6px 14px; }
 button.ghost:hover { background: rgba(255,255,255,.3); }
 button.small { padding: 4px 10px; font-size: .8rem; }

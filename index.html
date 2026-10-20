@@ -9,6 +9,7 @@
 <body>
   <main class="app">
     <div class="account" id="account" hidden>
+      <span id="demoBadge" class="demo-badge" hidden title="This live demo has no server. Accounts are saved only in this browser.">Demo</span>
       <span id="who" class="who" hidden></span>
       <button id="loginBtn" class="ghost">Log in</button>
       <button id="logoutBtn" class="ghost" hidden>Log out</button>
@@ -55,6 +56,7 @@
       </div>
       <h2 id="authTitle">Welcome back</h2>
       <p class="auth-note" id="authNote">Log in to see your saved quotes and jokes on any device.</p>
+      <p class="demo-note" id="demoNote" hidden>Live demo: there's no server here, so accounts are stored only in this browser. Please don't reuse a real password.</p>
 
       <label for="username">Username</label>
       <input id="username" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required>
